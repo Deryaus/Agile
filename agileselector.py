@@ -69,12 +69,10 @@ def handle_answers():
             user_answer3 = 0 # Yes
         else:
             user_answer3 = 1 # No
- 
-    
     current_question += 1
     load_question()
     display_result()
-    return user_answer1, user_answer2, user_answer3
+  
 
 def display_result():
     global current_question, answers, user_answer1, user_answer2, user_answer3
