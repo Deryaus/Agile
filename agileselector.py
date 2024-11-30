@@ -11,16 +11,11 @@ Parameters:
  None
 
 ---------------------ι𝐍Ⓙย𝐬𝓣ᶤςⒺ Ⓐ𝐍ＹωᕼⒺг𝐄 ᶤ𝐬 ᵃ tｈяᗴＡт ⓉＯ 𝐣υ𝔰ｔ𝐢ᶜⓔ 𝐄V乇яｙ山卄εŘ乇--------------------"""
-
-
 from tkinter import *
 from tkinter import ttk
-from tkinter import messagebox  
 import inspect, os, ctypes
-from tkinter.font import Font
 
 # Initialize global variables
-#global current_question, user_answer1, user_answer2, user_answer3, answers
 current_question = 0
 answers = []
 user_answer1 = None
@@ -49,20 +44,13 @@ def load_question():
         btn_answer1.config(text="Yes")
         btn_answer2.config(text="No")
 
-
-
 def option1_clicked():  
     answers.append(btn_answer1.cget("text"))
     handle_answers()
-    print(answers)
-    print(len(answers))
 
 def option2_clicked():
     answers.append(btn_answer2.cget("text"))
     handle_answers()
-    print(answers)
-    print(len(answers))   
-
     
 def handle_answers():
     global current_question, user_answer1, user_answer2, user_answer3
@@ -84,19 +72,13 @@ def handle_answers():
  
     
     current_question += 1
-    print(f"current question # is {current_question}")
     load_question()
     display_result()
-    print(f"user answer 1 is {user_answer1}")
-    print(f"user answer 2 is {user_answer2}")   
-    print(f"user answer 3 is {user_answer3}")
     return user_answer1, user_answer2, user_answer3
-
 
 def display_result():
     global current_question, answers, user_answer1, user_answer2, user_answer3
     result = None
-
     if user_answer1 == 1:
         if user_answer2 == 0:
             result = "Incremental"
@@ -115,24 +97,24 @@ def display_result():
                 result = "Iterative"
 
     if result:
-        lbl_title.config(text=f"The best Agile methodology for you is\n\t {result}")
+        lbl_title.config(text=f"The Best Agile Methodology For Your Project is:\n\n\t {result}")
         current_question = 0
         answers.clear()
         user_answer1, user_answer2, user_answer3 = None, None, None        
         load_question()
   
-
-
 # Create the main window
 root = Tk()
-root.title("Agile Methedology selector")
+root.title("Agile Methodology Selector")
 root.minsize(600, 600)
 root.maxsize(600, 600)
-
+ # Set the icon 
+root.iconbitmap(os.path.join(script_dir, "agile_icon.ico"))
 # Set the icon and title of the window Once You have an image
-#ctypes.windll.shel32.SetCurrentProcessExplicitAppUserModelID("agile.agileselector")
-#root.withdraw
-#root.iconbitmap(os.path.join(script_dir, "agile.ico"))
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("Agile.agileselector")
+root.withdraw()
+root.iconbitmap(os.path.join(script_dir, "agile_icon.ico"))
+root.deiconify()
 
 root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=1)
@@ -189,7 +171,6 @@ btn_answer1.grid(row=3, column=0, padx=10, pady=5, sticky="nsew")
 # add button to bottom right frame
 btn_answer2 = ttk.Button(bottom_right_frm, text="No", command=option2_clicked, width=10)
 btn_answer2.grid(row=3, column=1, padx=10, pady=5, sticky="nsew")
-
 
 # Run the application
 root.mainloop()
