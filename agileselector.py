@@ -110,7 +110,6 @@ root.minsize(600, 600)
 root.maxsize(600, 600)
  # Set the icon 
 root.iconbitmap(os.path.join(script_dir, "agile_icon.ico"))
-# Set the icon and title of the window Once You have an image
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("Agile.agileselector")
 root.withdraw()
 root.iconbitmap(os.path.join(script_dir, "agile_icon.ico"))
